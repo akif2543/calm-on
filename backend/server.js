@@ -22,7 +22,7 @@ initPassportStrategy(passport);
 
 const db = process.env.MONGO_URI;
 mongoose
-  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect('mongodb://localhost:27017/admin', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("DB is connected.");
   })
@@ -40,6 +40,6 @@ mongoose.set("useFindAndModify", false);
 
 app.use("/api", apiRoutes);
 
-app.listen(process.env.PORT || 3001, () => {
+app.listen(  3001, () => {
   console.log("You are connected!");
 });
