@@ -7,13 +7,15 @@ const passport = require("passport");
 const User = require("../models/user");
 const { formatErrors, valid } = require("../util/validations");
 
-const secret = process.env.SECRET;
+// const secret = process.env.SECRET;
+const secret = '123@#!SDF';
 
 const router = express.Router();
 
 router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
 
+  const { email, password } = req.body;
+  console.log(email, password)
   if (!email || !valid(email) || !password || !valid(password))
     return res
       .status(422)
@@ -45,6 +47,7 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
+  console.log(req.body);
   const { email, password, birthday } = req.body;
 
   if (
